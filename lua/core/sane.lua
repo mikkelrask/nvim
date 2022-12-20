@@ -1,4 +1,4 @@
--- Sane defaults
+-  Sane defaults
 vim.g.mapleader           = ' '
 vim.g.maplocalleader      = ' '
 
