@@ -28,3 +28,6 @@ map('n', 'x', '<Del>', opts)
 
 -- Update packages
 map('n', '<leader>P', ':PackerSync<CR>', opts)
+
+-- Remove search highlights
+map('n', '<leader>h', cmd.nohlsearch, opts)
