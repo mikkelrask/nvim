@@ -18,4 +18,4 @@ require("nvim-tree").setup({
   },
 })
 
-vim.keymap.set('n', '<c-b>', ':NvimTreeFindFileToggle<CR>')
+vim.keymap.set('n', '<c-b>', vim.cmd.NvimTreeFindFileToggle)
