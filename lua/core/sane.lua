@@ -1,4 +1,4 @@
--  Sane defaults
+--  Sane defaults
 vim.g.mapleader           = ' '
 vim.g.maplocalleader      = ' '
 
@@ -29,4 +29,3 @@ vim.opt.incsearch         = true
 vim.opt.cul               = true
 vim.opt.undodir           = '.undo'
 vim.opt.backupdir         = '.backup'
-
