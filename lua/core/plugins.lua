@@ -20,6 +20,8 @@ return require('packer').startup(function(use)
   use 'nvim-treesitter/nvim-treesitter'
   use 'mbbill/undotree'
   use 'tpope/vim-fugitive'
+  use 'christoomey/vim-tmux-navigator'
+  use 'lukas-reineke/indent-blankline.nvim'
   use {
     'williamboman/mason.nvim',
     'williamboman/mason-lspconfig.nvim',

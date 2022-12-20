@@ -2,17 +2,17 @@
 vim.g.mapleader           = ' '
 vim.g.maplocalleader      = ' '
 
+vim.o.clipboard           = "unnamedplus"
 vim.opt.backspace         = '2'
 vim.opt.autowrite         = true
 vim.opt.number            = true
-vim.opt.relativenumber    = true
+vim.wo.relativenumber     = true
 vim.opt.smarttab          = true
 vim.opt.tabstop           = 2
 vim.opt.shiftwidth        = 2
 vim.opt.laststatus        = 2
-vim.opt.cursorline        = false
+vim.opt.cursorline        = true
 vim.opt.autoread          = true
-
 
 vim.opt.tabstop           = 2
 vim.opt.shiftwidth        = 2
@@ -29,3 +29,8 @@ vim.opt.incsearch         = true
 vim.opt.cul               = true
 vim.opt.undodir           = '.undo'
 vim.opt.backupdir         = '.backup'
+
+vim.opt.termguicolors     = true
+vim.opt.ignorecase        = true
+vim.opt.smartcase         = true
+vim.opt.wrap              = false
