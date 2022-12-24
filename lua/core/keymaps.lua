@@ -2,7 +2,7 @@ local map = vim.keymap.set
 local opts = { silent = true }
 local cmd = vim.cmd
 
--- Move windows
+  -- Move windows
 map('n', '<C-j>', '<C-w>j<CR>', opts)
 map('n', '<C-k>', '<C-w>k<CR>', opts)
 map('n', '<C-h>', '<C-w>h<CR>', opts)
@@ -40,7 +40,9 @@ map('n', '<C-w>', cmd.tabclose, {
 map('n', 'x', '<Del>', opts)
 
 -- Update packages
-map('n', '<leader>p', ':PackerSync<CR>', opts)
+map('n', '<leader>p', ':PackerSync<CR>', {
+  noremap = true
+})
 
 -- Remove search highlights
 map('n', '<leader>h', cmd.nohlsearch, opts)

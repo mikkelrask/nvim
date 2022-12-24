@@ -28,6 +28,7 @@ return require('packer').startup(function(use)
   use 'tpope/vim-fugitive'                                      -- Actual git
   use 'christoomey/vim-tmux-navigator'                          -- Make tmux and nvim aware of each other, and share keymappings (i.e pane management)
   use 'lukas-reineke/indent-blankline.nvim'                     -- Visual lines to indicate indentation - also adds return cariage ligatures and visual spacing
+  use 'edluffy/specs.nvim'
   -- CPM plugins - completion
   use 'hrsh7th/nvim-cmp'
   use 'hrsh7th/cmp-buffer'
@@ -37,6 +38,16 @@ return require('packer').startup(function(use)
   -- Snippets
   use 'L3MON4D3/LuaSnip'
   use 'rafamadriz/friendly-snippets'
+  use {
+  "folke/which-key.nvim",
+  config = function()
+    require("which-key").setup {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+      }
+  end
+  }
   use {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate'
