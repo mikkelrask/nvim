@@ -1,10 +1,8 @@
 local au = vim.cmd
 -- Templates
---
 -- HTML
 au("autocmd BufNewFile *.html 0r ~/.config/nvim/skeletons/html.html")
 -- Blog posts
-
 au("autocmd BufNewFile *contents/posts/*.md 0r ~/.config/nvim/skeletons/blog-post.md")
 -- Typescript REACT
 au("autocmd BufNewFile *.tsx 0r ~/.config/nvim/skeletons/react.tsx")

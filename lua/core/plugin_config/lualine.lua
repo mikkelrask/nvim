@@ -12,3 +12,5 @@ require('lualine').setup {
      }
    }
  }
+ 
+require('core.plugin_config.lualine_evil_lualine')

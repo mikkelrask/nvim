@@ -3,7 +3,7 @@ require('mason-lspconfig').setup({
   ensure_installed = { 'sumneko_lua' }
 })
 
-local on_attach = function(_, bufnr)
+local on_attach = function(_, _)
   vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, {})
   vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, {})
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {})

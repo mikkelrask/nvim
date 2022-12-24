@@ -10,22 +10,53 @@ local ensure_packer = function()
 end
 
 local packer_bootstrap = ensure_packer()
+require('packer').init {
+  display = {
+    open_fn = function()
+      return require('packer.util').float { border = 'rounded'}
+    end
+  }
+}
 
 return require('packer').startup(function(use)
-  use 'wbthomason/packer.nvim'
-  use 'ellisonleao/gruvbox.nvim'
-  use 'nvim-tree/nvim-tree.lua'
-  use 'nvim-tree/nvim-web-devicons'
-  use 'nvim-lualine/lualine.nvim'
-  use 'nvim-treesitter/nvim-treesitter'
-  use 'mbbill/undotree'
-  use 'tpope/vim-fugitive'
-  use 'christoomey/vim-tmux-navigator'
-  use 'lukas-reineke/indent-blankline.nvim'
+  use 'wbthomason/packer.nvim'                                  -- Install packages with ease
+  use 'ellisonleao/gruvbox.nvim'                                -- Make those colors groove
+  use 'nvim-tree/nvim-tree.lua'                                 -- Nerd tree but lua'd
+  use 'nvim-tree/nvim-web-devicons'                             -- Icons for file tree, LSP icons and tabicons
+  use 'nvim-lualine/lualine.nvim'                               -- That evil airline at the buttom
+  use 'mbbill/undotree'                                         -- If CTRL-Z had git
+  use 'tpope/vim-fugitive'                                      -- Actual git
+  use 'christoomey/vim-tmux-navigator'                          -- Make tmux and nvim aware of each other, and share keymappings (i.e pane management)
+  use 'lukas-reineke/indent-blankline.nvim'                     -- Visual lines to indicate indentation - also adds return cariage ligatures and visual spacing
+  -- CPM plugins - completion
+  use 'hrsh7th/nvim-cmp'
+  use 'hrsh7th/cmp-buffer'
+  use 'hrsh7th/cmp-path'
+  use 'hrsh7th/cmp-cmdline'
+  use 'saadparwaiz1/cmp_luasnip'
+  -- Snippets
+  use 'L3MON4D3/LuaSnip'
+  use 'rafamadriz/friendly-snippets'
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate'
+  }
+  use {'romgrk/barbar.nvim', wants = 'nvim-web-devicons'}
+  use {
+      'notjedi/nvim-rooter.lua',
+      config = function()
+        require'nvim-rooter'.setup()
+      end
+  }
   use {
     'williamboman/mason.nvim',
     'williamboman/mason-lspconfig.nvim',
     'neovim/nvim-lspconfig',
+  }
+  use {
+    'iamcco/markdown-preview.nvim',
+    run = 'cd app && yarn install',
+    cmd = 'MarkdownPreview'
   }
   use {
     'nvim-telescope/telescope.nvim',
@@ -36,20 +67,7 @@ return require('packer').startup(function(use)
     "windwp/nvim-autopairs",
       config = function() require("nvim-autopairs").setup {} end
   }
-  use {
-    'goolord/alpha-nvim',
-    config = function ()
-        require'alpha'.setup(require'alpha.themes.dashboard'.config)
-    end
-}
-  
-  -- My plugins here
-  -- use 'foo1/bar1.nvim'
-  -- use 'foo2/bar2.nvim'
 
-
-  -- Automatically set up your configuration after cloning packer.nvim
-  -- Put this at the end after all plugins
   if packer_bootstrap then
     require('packer').sync()
   end

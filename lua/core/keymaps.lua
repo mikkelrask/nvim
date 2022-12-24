@@ -19,15 +19,28 @@ map('n', 'sv', ':below wincmd f<CR>', opts)
 -- New tab
 map('n', '<C-t>', cmd.tabedit, opts)
 
--- Tab switches tab i N-mode
-map('n', '<Tab>', cmd.tabnext, opts)
-map('n', '<S-Tab>', cmd.tabprev, opts)
+-- Tabs (next, prev, close, save and close)
+map('n', '<Tab>', cmd.BufferNext, {
+  noremap       = true,
+  silent        = true,
+  }
+)
+map('n', '<S-Tab>', cmd.BufferPrevious, {
+  noremap       = true,
+  silent        = true,
+  }
+)
+map('n', '<C-w>', cmd.tabclose, {
+  noremap       = true,
+  silent        = true
+  }
+)
 
 -- x should not yank
 map('n', 'x', '<Del>', opts)
 
 -- Update packages
-map('n', '<leader>P', ':PackerSync<CR>', opts)
+map('n', '<leader>p', ':PackerSync<CR>', opts)
 
 -- Remove search highlights
 map('n', '<leader>h', cmd.nohlsearch, opts)
