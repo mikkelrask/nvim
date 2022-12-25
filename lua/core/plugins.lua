@@ -22,6 +22,7 @@ return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'                                  -- Install packages with ease
   use 'ellisonleao/gruvbox.nvim'                                -- Make those colors groove
   use 'nvim-tree/nvim-tree.lua'                                 -- Nerd tree but lua'd
+  use 'mhinz/vim-startify'
   use 'nvim-tree/nvim-web-devicons'                             -- Icons for file tree, LSP icons and tabicons
   use 'nvim-lualine/lualine.nvim'                               -- That evil airline at the buttom
   use 'mbbill/undotree'                                         -- If CTRL-Z had git
@@ -78,8 +79,4 @@ return require('packer').startup(function(use)
     "windwp/nvim-autopairs",
       config = function() require("nvim-autopairs").setup {} end
   }
-
-  if packer_bootstrap then
-    require('packer').sync()
-  end
 end)

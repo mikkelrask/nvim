@@ -14,4 +14,3 @@ require('core.plugin_config.snippets')
 require('core.plugin_config.rooter')
 require('core.plugin_config.barbar')
 require('core.plugin_config.specs')
-

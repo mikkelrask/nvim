@@ -36,13 +36,17 @@ map('n', '<C-w>', cmd.tabclose, {
   }
 )
 
+-- cursor line
+map('n', '<C><C>', ':lua require("specs").show_specs()<CR>')
+
 -- x should not yank
 map('n', 'x', '<Del>', opts)
 
 -- Update packages
-map('n', '<leader>p', ':PackerSync<CR>', {
-  noremap = true
+map('n', ' p', ':PackerSync<CR>', {
+  noremap       = true,
+  silent        = true
 })
 
 -- Remove search highlights
-map('n', '<leader>h', cmd.nohlsearch, opts)
+map('n', ' h', cmd.nohlsearch, opts)

@@ -1,6 +1,6 @@
 --  Sane defaults
-vim.g.mapleader           = ' '
-vim.g.maplocalleader      = ' '
+vim.g.mapleader           = '<Space>'
+vim.g.maplocalleader      = '<Space>'
 
 vim.o.clipboard           = "unnamedplus"
 vim.opt.backspace         = '2'
