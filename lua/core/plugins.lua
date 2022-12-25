@@ -22,7 +22,6 @@ return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'                                  -- Install packages with ease
   use 'ellisonleao/gruvbox.nvim'                                -- Make those colors groove
   use 'nvim-tree/nvim-tree.lua'                                 -- Nerd tree but lua'd
-  use 'mhinz/vim-startify'
   use 'nvim-tree/nvim-web-devicons'                             -- Icons for file tree, LSP icons and tabicons
   use 'nvim-lualine/lualine.nvim'                               -- That evil airline at the buttom
   use 'mbbill/undotree'                                         -- If CTRL-Z had git
@@ -69,6 +68,13 @@ return require('packer').startup(function(use)
     'iamcco/markdown-preview.nvim',
     run = 'cd app && yarn install',
     cmd = 'MarkdownPreview'
+  }
+  use {
+    'goolord/alpha-nvim',
+    requires = { 'nvim-tree/nvim-web-devicons' },
+    config = function ()
+        require'alpha'.setup(require'alpha.themes.startify'.config)
+    end
   }
   use {
     'nvim-telescope/telescope.nvim',
