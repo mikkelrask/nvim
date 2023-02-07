@@ -1,4 +1,4 @@
-require('core.plugin_config.gruvbox')
+require('core.plugin_config.catppuccin')
 require('core.plugin_config.nvim-tree')
 require('core.plugin_config.lualine')
 require('core.plugin_config.treesitter')
@@ -14,3 +14,4 @@ require('core.plugin_config.snippets')
 require('core.plugin_config.rooter')
 require('core.plugin_config.barbar')
 require('core.plugin_config.specs')
+

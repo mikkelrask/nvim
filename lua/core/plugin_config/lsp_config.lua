@@ -1,6 +1,6 @@
 require('mason').setup()
 require('mason-lspconfig').setup({
-  ensure_installed = { 'sumneko_lua' }
+  ensure_installed = { 'sumneko_lua', 'tailwindcss', 'pyright' }
 })
 
 local on_attach = function(_, _)
@@ -12,6 +12,10 @@ local on_attach = function(_, _)
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
 end
 
-require("lspconfig").sumneko_lua.setup {
+local nvim_lsp = require "lspconfig"
+nvim_lsp.tailwindcss.setup {}
+nvim_lsp.sumneko_lua.setup {
   on_attach = on_attach
 }
+nvim_lsp.pyright.setup {}
+

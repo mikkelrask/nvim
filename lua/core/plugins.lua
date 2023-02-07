@@ -20,7 +20,8 @@ require('packer').init {
 
 return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'                                  -- Install packages with ease
-  use 'ellisonleao/gruvbox.nvim'                                -- Make those colors groove
+--  use 'ellisonleao/gruvbox.nvim'                                -- Make those colors groove
+  use "catppuccin/nvim"
   use 'nvim-tree/nvim-tree.lua'                                 -- Nerd tree but lua'd
   use 'nvim-tree/nvim-web-devicons'                             -- Icons for file tree, LSP icons and tabicons
   use 'nvim-lualine/lualine.nvim'                               -- That evil airline at the buttom
@@ -38,6 +39,19 @@ return require('packer').startup(function(use)
   -- Snippets
   use 'L3MON4D3/LuaSnip'
   use 'rafamadriz/friendly-snippets'
+  use({
+  "jackMort/ChatGPT.nvim",
+    config = function()
+      require("chatgpt").setup({
+        -- optional configuration
+      })
+    end,
+    requires = {
+      "MunifTanjim/nui.nvim",
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope.nvim"
+    }
+  })
   use {
   "folke/which-key.nvim",
   config = function()
