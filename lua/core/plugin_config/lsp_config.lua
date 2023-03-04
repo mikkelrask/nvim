@@ -1,6 +1,6 @@
 require('mason').setup()
 require('mason-lspconfig').setup({
-  ensure_installed = { 'sumneko_lua', 'tailwindcss', 'pyright' }
+  ensure_installed = { 'lua_ls', 'tailwindcss', 'pyright', 'bashls'}
 })
 
 local on_attach = function(_, _)
@@ -14,8 +14,8 @@ end
 
 local nvim_lsp = require "lspconfig"
 nvim_lsp.tailwindcss.setup {}
-nvim_lsp.sumneko_lua.setup {
+nvim_lsp.lua_ls.setup {
   on_attach = on_attach
 }
 nvim_lsp.pyright.setup {}
-
+nvim_lsp.bashls.setup {}
