@@ -1,6 +1,6 @@
 require('mason').setup()
 require('mason-lspconfig').setup({
-  ensure_installed = { 'lua_ls', 'tailwindcss', 'pyright', 'bashls'}
+  ensure_installed = { 'tsserver', 'lua_ls', 'tailwindcss', 'pyright', 'bashls', 'vtsls' }
 })
 
 local on_attach = function(_, _)
@@ -14,6 +14,8 @@ end
 
 local nvim_lsp = require "lspconfig"
 nvim_lsp.tailwindcss.setup {}
+nvim_lsp.tsserver.setup {}
+nvim_lsp.vtsls.setup {}
 nvim_lsp.lua_ls.setup {
   on_attach = on_attach
 }
