@@ -30,6 +30,11 @@ return require('packer').startup(function(use)
   use 'christoomey/vim-tmux-navigator'                          -- Make tmux and nvim aware of each other, and share keymappings (i.e pane management)
   use 'lukas-reineke/indent-blankline.nvim'                     -- Visual lines to indicate indentation - also adds return cariage ligatures and visual spacing
   use 'edluffy/specs.nvim'
+  use {'echasnovski/mini.map', config = function()
+	  require('mini.map').setup({})
+	  end
+	}
+  use 'jiangmiao/auto-pairs'                                    -- Auto close and auto delete brackets, parantheses and quotes in pairs.
   -- CPM plugins - completion
   use 'hrsh7th/nvim-cmp'
   use 'hrsh7th/cmp-buffer'
@@ -78,11 +83,10 @@ return require('packer').startup(function(use)
     'williamboman/mason-lspconfig.nvim',
     'neovim/nvim-lspconfig',
   }
-  use {
-    'iamcco/markdown-preview.nvim',
-    run = 'cd app && yarn install',
-    cmd = 'MarkdownPreview'
-  }
+  use({
+      "iamcco/markdown-preview.nvim",
+      run = function() vim.fn["mkdp#util#install"]() end,
+  })
   use {
     'goolord/alpha-nvim',
     requires = { 'nvim-tree/nvim-web-devicons' },
