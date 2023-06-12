@@ -52,3 +52,6 @@ map('n', ' p', ':PackerSync<CR>', {
 
 -- Remove search highlights
 map('n', ' h', cmd.nohlsearch, opts)
+-- j
+-- Build Pio project
+map('n', ' b',':!pio run<CR>', {silent=false})
