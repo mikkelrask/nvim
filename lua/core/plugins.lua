@@ -20,8 +20,9 @@ require('packer').init {
 
 return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'                                  -- Install packages with ease
---  use 'ellisonleao/gruvbox.nvim'                                -- Make those colors groove
+--  use 'ellisonleao/gruvbox.nvim'                                -- Make those colors groovejkjkjkjkjkkkk
   use "catppuccin/nvim"
+  use "rubixninja314/vim-mcfunction"
   use 'nvim-tree/nvim-tree.lua'                                 -- Nerd tree but lua'd
   use 'nvim-tree/nvim-web-devicons'                             -- Icons for file tree, LSP icons and tabicons
   use 'nvim-lualine/lualine.nvim'                               -- That evil airline at the buttom

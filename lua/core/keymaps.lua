@@ -1,6 +1,9 @@
 local map = vim.keymap.set
 local opts = { silent = true }
 local cmd = vim.cmd
+-- set leader to space
+map('n', '<Space>', '', {})
+vim.g.mapleader = ' '
 
   -- Move windows
 map('n', '<C-j>', '<C-w>j<CR>', opts)
@@ -19,6 +22,14 @@ map('n', 'sv', ':below wincmd f<CR>', opts)
 -- Resize Splits
 -- New tab
 map('n', '<C-t>', cmd.tabedit, opts)
+
+
+-- Search in project
+map('n', '<leader>ff', ':Telescope find_files<CR>', opts)
+map('n', '<leader>fg', ':Telescope live_grep<CR>', opts)
+map('n', '<leader>fb', ':Telescope buffers<CR>', opts)
+map('n', '<leader>fh', ':Telescope help_tags<CR>', opts)
+
 
 
 -- Tabs (next, prev, close, save and close)
