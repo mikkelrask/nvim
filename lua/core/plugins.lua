@@ -1,87 +1,116 @@
-local ensure_packer = function()
-  local fn = vim.fn
-  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
-  if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
-    vim.cmd [[packadd packer.nvim]]
-    return true
-  end
-  return false
+
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  -- If lazy.nvim is not installed, we clone itPress <CR> on a solution to accept
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
 end
+vim.opt.rtp:prepend(lazypath)
 
-local packer_bootstrap = ensure_packer()
-require('packer').init {
-  display = {
-    open_fn = function()
-      return require('packer.util').float { border = 'rounded'}
-    end
-  }
-}
-
-return require('packer').startup(function(use)
-  use 'wbthomason/packer.nvim'                                  -- Install packages with ease
---  use 'ellisonleao/gruvbox.nvim'                                -- Make those colors groovejkjkjkjkjkkkk
-  use "catppuccin/nvim"
-  use "rubixninja314/vim-mcfunction"
-  use 'nvim-tree/nvim-tree.lua'                                 -- Nerd tree but lua'd
-  use 'nvim-tree/nvim-web-devicons'                             -- Icons for file tree, LSP icons and tabicons
-  use 'nvim-lualine/lualine.nvim'                               -- That evil airline at the buttom
-  use 'mbbill/undotree'                                         -- If CTRL-Z had git
-  use 'tpope/vim-fugitive'                                      -- Actual git
-  use 'christoomey/vim-tmux-navigator'                          -- Make tmux and nvim aware of each other, and share keymappings (i.e pane management)
-  use 'lukas-reineke/indent-blankline.nvim'                     -- Visual lines to indicate indentation - also adds return cariage ligatures and visual spacing
-  use 'edluffy/specs.nvim'
-  use {'echasnovski/mini.map', config = function()
-	  require('mini.map').setup({})
-	  end
-	}
-  use 'jiangmiao/auto-pairs'                                    -- Auto close and auto delete brackets, parantheses and quotes in pairs.
+local plugins = {
+  'wbthomason/packer.nvim',                                  -- Install packages with ease
+  'ellisonleao/gruvbox.nvim',                                -- Make those colors groovejkjkjkjkjkkkk,
+  -- "catppuccin/nvim",
+  "rubixninja314/vim-mcfunction",
+  {
+    "nvim-tree/nvim-tree.lua",
+    version = "*",
+    lazy = false,
+    dependencies = {
+    "nvim-tree/nvim-web-devicons",
+    },
+    config = function()
+      require("nvim-tree").setup {}
+    end,
+  },
+  'nvim-lualine/lualine.nvim',                               -- That evil airline at the buttom
+  'mbbill/undotree',                                         -- If CTRL-Z had git
+  'tpope/vim-fugitive',                                      -- Actual git
+  'christoomey/vim-tmux-navigator',                          -- Make tmux and nvim aware of each other, and share keymappings (i.e pane management)
+  {'lukas-reineke/indent-blankline.nvim', main = "ibl", opts = {}},                     -- Visual lines to indicate indentation - also adds return cariage ligatures and visual spacing
+  'edluffy/specs.nvim',
+  {'echasnovski/mini.nvim', version = '*' },
+  "jiangmiao/auto-pairs",
   -- CPM plugins - completion
-  use 'hrsh7th/nvim-cmp'
-  use 'hrsh7th/cmp-buffer'
-  use 'hrsh7th/cmp-path'
-  use 'hrsh7th/cmp-cmdline'
-  use 'saadparwaiz1/cmp_luasnip'
+  'hrsh7th/nvim-cmp',
+  'hrsh7th/cmp-buffer',
+  'hrsh7th/cmp-path',
+  'hrsh7th/cmp-cmdline',
+  'saadparwaiz1/cmp_luasnip',
   -- Snippets
-  use 'L3MON4D3/LuaSnip'
-  use 'rafamadriz/friendly-snippets'
-  use {
+  'L3MON4D3/LuaSnip',
+  'rafamadriz/friendly-snippets',
+  {
     'nvim-treesitter/nvim-treesitter',
-    run = ':TSUpdate'
-  }
-  use {'romgrk/barbar.nvim', wants = 'nvim-web-devicons'}
-  use {
+    cmd = ':TSUpdate'
+  },
+  {
+  "folke/noice.nvim",
+  event = "VeryLazy",
+  opts = {
+    -- add any options here
+  },
+  dependencies = {
+    -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+    "MunifTanjim/nui.nvim",
+    -- OPTIONAL:
+    --   `nvim-notify` is only needed, if you want to use the notification view.
+    --   If not available, we use `mini` as the fallback
+    "rcarriga/nvim-notify",
+    }
+  },
+  {
       'notjedi/nvim-rooter.lua',
       config = function()
-        require'nvim-rooter'.setup()
       end
-  }
-  use {
+  },
+  {
     'williamboman/mason.nvim',
     'williamboman/mason-lspconfig.nvim',
     'neovim/nvim-lspconfig',
-  }
-  use({
-      "iamcco/markdown-preview.nvim",
-      run = function() vim.fn["mkdp#util#install"]() end,
-  })
-  use {
+  },
+  {
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    build = "cd app && yarn install",
+    init = function()
+      vim.g.mkdp_filetypes = { "markdown" }
+    end,
+    ft = { "markdown" },
+  },
+  {
     'goolord/alpha-nvim',
-    requires = { 'nvim-tree/nvim-web-devicons' },
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = function ()
         require'alpha'.setup(require'alpha.themes.startify'.config)
     end
-  }
-  use {
+  },
+  {
     'nvim-telescope/telescope.nvim',
     tag ='0.1.0',
-    requires = { {'nvim-lua/plenary.nvim'} }
-  }
-  use {
+    dependencies = { {'nvim-lua/plenary.nvim'} }
+  },
+  {
     "windwp/nvim-autopairs",
-      config = function() require("nvim-autopairs").setup {} end
-  }
-  use {
+      config = function() 
+        require("nvim-autopairs").setup {}
+      end
+  },
+  {
     "github/copilot.vim"
   }
-end)
+}
+local opts = {
+
+}
+require("lazy").setup(plugins, opts)
+
+
+
+

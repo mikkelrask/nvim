@@ -3,6 +3,7 @@ vim.g.loaded_netrwPlugin = 1
 
 require("nvim-tree").setup({
   update_cwd = true,
+  disable_netrw = true,
   update_focused_file = {
     enable = true,
     update_cwd = true
@@ -11,16 +12,7 @@ require("nvim-tree").setup({
   sort_by = "name",
   view = {
     adaptive_size = true,
-    mappings = {
-      list = {
-        { key = 'u', action = 'dir_up' },
-        { key = 'l', action = 'edit', action_cb = edit_or_open },
-        { key = 's', action = 'vsplit_preview', action_cb = vsplit_preview },
-        { key = 'h', action = 'close_node'},
-        { key = 'H', action = 'collapse_all', action_cb = collapse_all },
-      },
     },
-  },
 })
 
 vim.keymap.set('n', '<c-b>', vim.cmd.NvimTreeFindFileToggle)

@@ -1,4 +1,4 @@
-require('specs').setup{ 
+require('specs').setup{
     show_jumps  = true,
     min_jump = 20,
     popup = {

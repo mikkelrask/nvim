@@ -56,7 +56,7 @@ map('n', '<C><C>', ':lua require("specs").show_specs()<CR>')
 map('n', 'x', '<Del>', opts)
 
 -- Update packages
-map('n', ' p', ':PackerSync<CR>', {
+map('n', ' p', ':Lazy update<CR>', {
   noremap       = true,
   silent        = true
 })

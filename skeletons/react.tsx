@@ -1,6 +1,8 @@
 import React from "react"
 
-interface Props {}
+interface Props {
+
+}
 
 const NewComponent = (props: Props) => {
   return (

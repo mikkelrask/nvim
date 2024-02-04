@@ -12,8 +12,9 @@ require('luasnip/loaders/from_vscode').lazy_load()
 
 local check_backspace = function()
   local col = vim.fn.col '.' -1
-  return col == 0 or vim.fn.getline('.'):sub(col, col):match '%s'
-end
+    return col == 0 or vim.fn.getline('.'):sub(col, col):match '%s'
+  end
+
 
 local kind_icons = {
   Text = "",
@@ -60,12 +61,15 @@ cmp.setup {
       i = cmp.mapping.abort(),
       c = cmp.mapping.close(),
     },
+    
     -- Accept currently selected item. If none selected, `select` first item.
     -- Set `select` to `false` to only confirm explicitly selected items.
     ["<CR>"] = cmp.mapping.confirm { select = true },
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
+      elseif require("copilot.suggestion").is_visible() then
+	require("copilot.suggestion").accept()
       elseif luasnip.expandable() then
         luasnip.expand()
       elseif luasnip.expand_or_jumpable() then
