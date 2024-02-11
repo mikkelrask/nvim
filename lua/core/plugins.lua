@@ -7,21 +7,21 @@ if not vim.loop.fs_stat(lazypath) then
     "clone",
     "--filter=blob:none",
     "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
+    "--branch=stable",
     lazypath,
   })
 end
 vim.opt.rtp:prepend(lazypath)
 
+
 local plugins = {
-  'wbthomason/packer.nvim',                                  -- Install packages with ease
-  'ellisonleao/gruvbox.nvim',                                -- Make those colors groovejkjkjkjkjkkkk,
+  'ellisonleao/gruvbox.nvim',                                -- Make those colors gruuvy
   -- "catppuccin/nvim",
-  "rubixninja314/vim-mcfunction",
+  -- "rubixninja314/vim-mcfunction",
   {
     "nvim-tree/nvim-tree.lua",
     version = "*",
-    lazy = false,
+    lazy = true,
     dependencies = {
     "nvim-tree/nvim-web-devicons",
     },
@@ -33,36 +33,44 @@ local plugins = {
   'mbbill/undotree',                                         -- If CTRL-Z had git
   'tpope/vim-fugitive',                                      -- Actual git
   'christoomey/vim-tmux-navigator',                          -- Make tmux and nvim aware of each other, and share keymappings (i.e pane management)
-  {'lukas-reineke/indent-blankline.nvim', main = "ibl", opts = {}},                     -- Visual lines to indicate indentation - also adds return cariage ligatures and visual spacing
-  'edluffy/specs.nvim',
-  {'echasnovski/mini.nvim', version = '*' },
+  {
+    'lukas-reineke/indent-blankline.nvim', main = "ibl", opts = {}},                     -- Visual lines to indicate indentation - also adds return cariage ligatures and visual spacing
+    'edluffy/specs.nvim',
+  {
+    'echasnovski/mini.nvim', version = '*'
+  },
   "jiangmiao/auto-pairs",
   -- CPM plugins - completion
+  {
+    "zbirenbaum/copilot-cmp",
+    config = function ()
+      require("copilot_cmp").setup()
+    end
+  },
   'hrsh7th/nvim-cmp',
   'hrsh7th/cmp-buffer',
   'hrsh7th/cmp-path',
   'hrsh7th/cmp-cmdline',
-  'saadparwaiz1/cmp_luasnip',
   -- Snippets
+  'saadparwaiz1/cmp_luasnip',
   'L3MON4D3/LuaSnip',
   'rafamadriz/friendly-snippets',
   {
     'nvim-treesitter/nvim-treesitter',
-    cmd = ':TSUpdate'
   },
   {
-  "folke/noice.nvim",
-  event = "VeryLazy",
-  opts = {
-    -- add any options here
-  },
-  dependencies = {
-    -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-    "MunifTanjim/nui.nvim",
-    -- OPTIONAL:
-    --   `nvim-notify` is only needed, if you want to use the notification view.
-    --   If not available, we use `mini` as the fallback
-    "rcarriga/nvim-notify",
+    "folke/noice.nvim",
+    event = "VeryLazy",
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "rcarriga/nvim-notify",
+      },
+    opts = {
+      render = "minimal", -- default, compact, minimal, simple
+      stages = "fade", -- fade, fade_in_slide_out, slide, static
+      timeout = 1000,
+      top_down = true,
+
     }
   },
   {
@@ -93,24 +101,20 @@ local plugins = {
   },
   {
     'nvim-telescope/telescope.nvim',
-    tag ='0.1.0',
-    dependencies = { {'nvim-lua/plenary.nvim'} }
+    tag ='0.1.5',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'BurntSushi/ripgrep',
+      'sharkdp/fd'
+  	}
   },
   {
     "windwp/nvim-autopairs",
-      config = function() 
+      config = function()
         require("nvim-autopairs").setup {}
       end
-  },
-  {
-    "github/copilot.vim"
   }
 }
 local opts = {
-
 }
 require("lazy").setup(plugins, opts)
-
-
-
-
