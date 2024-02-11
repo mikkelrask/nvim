@@ -31,18 +31,6 @@ map('n', '<leader>fb', ':Telescope buffers<CR>', opts)
 map('n', '<leader>fh', ':Telescope help_tags<CR>', opts)
 
 
-
--- Tabs (next, prev, close, save and close)
-map('n', '<Tab>', cmd.BufferNext, {
-  noremap       = true,
-  silent        = true,
-  }
-)
-map('n', '<S-Tab>', cmd.BufferPrevious, {
-  noremap       = true,
-  silent        = true,
-  }
-)
 map('n', '<C-w>', cmd.tabclose, {
   noremap       = true,
   silent        = true
@@ -60,6 +48,7 @@ map('n', ' p', ':Lazy update<CR>', {
   noremap       = true,
   silent        = true
 })
+
 
 -- Remove search highlights
 map('n', ' h', cmd.nohlsearch, opts)
