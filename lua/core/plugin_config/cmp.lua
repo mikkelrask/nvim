@@ -61,15 +61,12 @@ cmp.setup {
       i = cmp.mapping.abort(),
       c = cmp.mapping.close(),
     },
-    
     -- Accept currently selected item. If none selected, `select` first item.
     -- Set `select` to `false` to only confirm explicitly selected items.
     ["<CR>"] = cmp.mapping.confirm { select = true },
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
-      elseif require("copilot.suggestion").is_visible() then
-	require("copilot.suggestion").accept()
       elseif luasnip.expandable() then
         luasnip.expand()
       elseif luasnip.expand_or_jumpable() then
@@ -103,6 +100,7 @@ cmp.setup {
       vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
       -- vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
       vim_item.menu = ({
+        copilot_cmp =  "[Copilot]",
         nvim_lsp = "[LSP]",
         luasnip = "[Snippet]",
         buffer = "[Buffer]",
@@ -112,6 +110,7 @@ cmp.setup {
     end,
   },
   sources = {
+    { name = 'copilot_cmp' },
     { name = "nvim_lsp" },
     { name = "luasnip" },
     { name = "buffer" },
@@ -119,7 +118,7 @@ cmp.setup {
   },
   confirm_opts = {
     behavior = cmp.ConfirmBehavior.Replace,
-    select = false,
+    select = true,
   },
   window = {
     documentation = {
