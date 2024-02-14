@@ -110,7 +110,7 @@ cmp.setup {
     end,
   },
   sources = {
-    { name = 'copilot_cmp' },
+    { name = 'copilot' },
     { name = "nvim_lsp" },
     { name = "luasnip" },
     { name = "buffer" },

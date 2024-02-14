@@ -17,3 +17,5 @@ require('core.plugin_config.specs')
 require('core.plugin_config.minimap')
 require('core.plugin_config.copilot')
 require('core.plugin_config.noice')
+require('core.plugin_config.oil')
+
