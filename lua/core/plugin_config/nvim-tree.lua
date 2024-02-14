@@ -12,7 +12,7 @@ require("nvim-tree").setup({
   sort_by = "name",
   view = {
     adaptive_size = true,
-    },
+  }
 })
 
 vim.keymap.set('n', '<c-b>', vim.cmd.NvimTreeFindFileToggle)

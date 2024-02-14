@@ -18,7 +18,16 @@ nvim_lsp.clangd.setup{}
 nvim_lsp.tailwindcss.setup {}
 nvim_lsp.vtsls.setup {}
 nvim_lsp.lua_ls.setup {
-  on_attach = on_attach
+  on_attach = on_attach,
+  settings = {
+	  Lua = {
+		  diagnostics = {
+			  globals = {
+				  'vim'
+			  }
+		  }
+	  }
+  }
 }
 nvim_lsp.pyright.setup {}
 nvim_lsp.bashls.setup {}

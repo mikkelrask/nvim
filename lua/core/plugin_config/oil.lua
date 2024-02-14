@@ -1,3 +1,5 @@
+vim.keymap.set("n", "-", "<CMD>Oil --float .<CR>", { desc = "Open parent directory" })
+
 require("oil").setup({
   -- Oil will take over directory buffers (e.g. `vim .` or `:e src/`)
   -- Set to false if you still want to use netrw.
@@ -18,11 +20,11 @@ require("oil").setup({
   -- Window-local options to use for oil buffers
   win_options = {
     wrap = false,
-    signcolumn = "no",
+    signcolumn = "yes",
     cursorcolumn = false,
-    foldcolumn = "0",
+    foldcolumn = "3",
     spell = false,
-    list = false,
+    list = true,
     conceallevel = 3,
     concealcursor = "nvic",
   },

@@ -14,7 +14,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 -- Install plugins
-
 local plugins = {
   'ellisonleao/gruvbox.nvim',                                -- Make those colors gruuvy
   {
@@ -38,8 +37,8 @@ local plugins = {
       vim.g.barbar_auto_setup = false
     end,
     opts = {
-      -- animation = true,
-      -- insert_at_start = true,
+      animation = true,
+      insert_at_start = true,
     },
     version = '^1.0.0', -- optional: only update when a new 1.x version is released
   },
@@ -49,10 +48,8 @@ local plugins = {
   {
     'lukas-reineke/indent-blankline.nvim', main = "ibl", opts = {}},                     -- Visual lines to indicate indentation - also adds return cariage ligatures and visual spacing
     'edluffy/specs.nvim',
-  {
-    'echasnovski/mini.nvim', version = '*'
-  },
   "jiangmiao/auto-pairs",
+
   -- CPM plugins - completion
   {
     'zbirenbaum/copilot.lua',
