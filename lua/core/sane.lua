@@ -10,9 +10,12 @@ vim.wo.relativenumber     = true
 vim.opt.smarttab          = true
 vim.opt.tabstop           = 2
 vim.opt.shiftwidth        = 2
-vim.opt.laststatus        = 2
+vim.opt.laststatus        = 3
 vim.opt.cursorline        = true
 vim.opt.autoread          = true
+vim.opt.hidden            = true
+vim.opt.showmode          = true
+vim.opt.showcmd           = true
 
 vim.opt.tabstop           = 2
 vim.opt.shiftwidth        = 2
@@ -35,3 +38,5 @@ vim.opt.ignorecase        = true
 vim.opt.smartcase         = true
 vim.opt.wrap              = false
 vim.opt.mouse             = ''
+vim.api.nvim_set_hl(0, 'Comment', { italic=true, fg='#7f848e' })
+-- This is not italic
