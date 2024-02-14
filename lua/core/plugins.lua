@@ -9,15 +9,14 @@ if not vim.loop.fs_stat(lazypath) then
     "https://github.com/folke/lazy.nvim.git",
     "--branch=stable",
     lazypath,
-  })
+})
 end
 vim.opt.rtp:prepend(lazypath)
 
+-- Install plugins
 
 local plugins = {
   'ellisonleao/gruvbox.nvim',                                -- Make those colors gruuvy
-  -- "catppuccin/nvim",
-  -- "rubixninja314/vim-mcfunction",
   {
     "nvim-tree/nvim-tree.lua",
     version = "*",
@@ -30,6 +29,20 @@ local plugins = {
     end,
   },
   'nvim-lualine/lualine.nvim',                               -- That evil airline at the buttom
+  {'romgrk/barbar.nvim',
+    dependencies = {
+      'lewis6991/gitsigns.nvim', -- OPTIONAL: for git status
+      'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
+    },
+    init = function()
+      vim.g.barbar_auto_setup = false
+    end,
+    opts = {
+      -- animation = true,
+      -- insert_at_start = true,
+    },
+    version = '^1.0.0', -- optional: only update when a new 1.x version is released
+  },
   'mbbill/undotree',                                         -- If CTRL-Z had git
   'tpope/vim-fugitive',                                      -- Actual git
   'christoomey/vim-tmux-navigator',                          -- Make tmux and nvim aware of each other, and share keymappings (i.e pane management)
@@ -42,11 +55,20 @@ local plugins = {
   "jiangmiao/auto-pairs",
   -- CPM plugins - completion
   {
+    'zbirenbaum/copilot.lua',
+    cmd = "Copilot",
+    event = "InsertEnter",
+    config = function()
+      require('copilot').setup({})
+    end
+  },
+  {
     "zbirenbaum/copilot-cmp",
     config = function ()
       require("copilot_cmp").setup()
     end
   },
+  'nvim-treesitter/nvim-treesitter',
   'hrsh7th/nvim-cmp',
   'hrsh7th/cmp-buffer',
   'hrsh7th/cmp-path',
@@ -55,9 +77,6 @@ local plugins = {
   'saadparwaiz1/cmp_luasnip',
   'L3MON4D3/LuaSnip',
   'rafamadriz/friendly-snippets',
-  {
-    'nvim-treesitter/nvim-treesitter',
-  },
   {
     "folke/noice.nvim",
     event = "VeryLazy",
@@ -68,10 +87,23 @@ local plugins = {
     opts = {
       render = "minimal", -- default, compact, minimal, simple
       stages = "fade", -- fade, fade_in_slide_out, slide, static
-      timeout = 1000,
+      timeout = 500,
       top_down = true,
 
     }
+  },
+  {
+    'stevearc/oil.nvim',
+    opts = {},
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'nvim-lua/popup.nvim',
+      'nvim-tree/nvim-web-devicons',
+    },
+    event = "BufRead",
+    config = function()
+      require("oil").setup()
+    end
   },
   {
       'notjedi/nvim-rooter.lua',
