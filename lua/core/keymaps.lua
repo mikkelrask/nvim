@@ -11,7 +11,7 @@ map('n', '<C-k>', '<C-w>k<CR>', opts)
 map('n', '<C-h>', '<C-w>h<CR>', opts)
 map('n', '<C-l>', '<C-w>l<CR>', opts)
 map('n', '<C-r>j', ':resize -2vv<CR>', opts)
-map('n', '<C-r>k', ':resize +2<CR>', opts)
+map('n', '<C-r>k', ':resize +2vv<CR>', opts)
 map('n', '<C-r>h', ':vertical resize +2<CR>', opts)
 map('n', '<C-r>l', ':vertical resize -2<CR>', opts)
 
@@ -20,6 +20,7 @@ map('n', 'ss',':below wincmd f<CR>', opts)
 map('n', 'sv', ':below wincmd f<CR>', opts)
 
 -- Resize Splits
+--
 -- New tab
 map('n', '<C-t>', cmd.tabedit, opts)
 
@@ -29,7 +30,9 @@ map('n', '<leader>ff', ':Telescope find_files<CR>', opts)
 map('n', '<leader>fg', ':Telescope live_grep<CR>', opts)
 map('n', '<leader>fb', ':Telescope buffers<CR>', opts)
 map('n', '<leader>fh', ':Telescope help_tags<CR>', opts)
+map('n', '<leader>sd', ':Telescope diagnostics<CR>' opts)
 
+map('n', '<leader>so', ':source %<CR>', opts)
 
 map('n', '<C-w>', cmd.tabclose, {
   noremap       = true,
