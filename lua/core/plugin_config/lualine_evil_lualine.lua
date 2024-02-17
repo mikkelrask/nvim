@@ -26,6 +26,7 @@ local config = {
       -- are just setting default looks o statusline
       normal = { c = { fg = colors.yellow, bg = colors.bg } },
       inactive = { c = { fg = colors.fg, bg = colors.bg } },
+      warning = { c = { fg = colors.red, bg = colors.bg } },
     },
     disabled_filetypes = {
       'NvimTree',
@@ -70,7 +71,7 @@ ins_left {
   function()
     return ''
   end,
-  color = { fg = colors.blue }, -- Sets highlighting of component
+  color = { fg = colors.blue, bg = colors.green }, -- Sets highlighting of component
   padding = { left = 0, right = 1 }, -- We don't need space before this
 }
 
@@ -166,7 +167,8 @@ ins_left {
   color = { fg = colors.red, gui = 'bold' },
 }
 
--- Add components to right sections
+
+
 ins_right {
   'o:encoding', -- option component same as &encoding in viml
   fmt = string.upper, -- I'm not sure why it's upper case either ;)

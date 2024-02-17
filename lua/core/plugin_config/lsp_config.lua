@@ -1,6 +1,6 @@
 require('mason').setup()
 require('mason-lspconfig').setup({
-  ensure_installed = { 'tsserver', 'lua_ls', 'clangd', 'tailwindcss', 'pyright', 'bashls', 'vtsls' }
+  ensure_installed = { 'tsserver', 'lua_ls', 'clangd', 'tailwindcss', 'pyright', 'bashls', 'vtsls' },
 })
 
 local on_attach = function(_, _)

@@ -2,12 +2,14 @@ vim.opt.listchars:append "space:⋅"
 vim.opt.listchars:append "eol:↴"
 
 local highlight = {
-    "CursorColumn",
-    "Whitespace",
+  "CursorColumn",
+  "Whitespace",
+  "EndOfBuffer",
 }
 require("ibl").setup {
   indent = {
-    highlight = highlight,
+    highlight = { "Function", "Label" },
+    smart_indent_cap = true,
     char = '┊'
   },
   whitespace = {
@@ -17,9 +19,11 @@ require("ibl").setup {
       'Function',
       'Label'
     },
-    remove_blankline_trail = true
+    remove_blankline_trail = false
   },
   scope = {
-    enabled = true
+    enabled = true,
+    show_end = true,
+    show_exact_scope = true
   }
 }
