@@ -11,3 +11,5 @@ au("autocmd BufNewFile *.jsx 0r ~/.config/nvim/skeletons/react.tsx")
 au("autocmd BufNewFile *.sh 0r ~/.config/nvim/skeletons/script.sh")
 -- Python
 au("autocmd BufNewFile *.py 0r ~/.config/nvim/skeletons/python.py")
+-- Platformio.ini
+au("autocmd BufNewFile platformio.ini 0r ~/.config/nvim/skeletons/platformio.ini")

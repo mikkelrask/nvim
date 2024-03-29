@@ -15,7 +15,8 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Install plugins
 local plugins = {
-  'ellisonleao/gruvbox.nvim',                                -- Make those colors gruuvy
+  --'ellisonleao/gruvbox.nvim',                                -- Make those colors gruuvy
+  {'rose-pine/neovim', name="rose-pine"},
   {
     "nvim-tree/nvim-tree.lua",
     version = "*",
@@ -31,10 +32,11 @@ local plugins = {
   'j-hui/fidget.nvim',
   'mbbill/undotree',                                         -- If CTRL-Z had git
   'tpope/vim-fugitive',                                      -- Actual git
+  'normen/vim-pio',
   'christoomey/vim-tmux-navigator',                          -- Make tmux and nvim aware of each other, and share keymappings (i.e pane management)
   {
-    'lukas-reineke/indent-blankline.nvim', main = "ibl", opts = {}},                     -- Visual lines to indicate indentation - also adds return cariage ligatures and visual spacing
-    'edluffy/specs.nvim',
+    'lukas-reineke/indent-blankline.nvim', main = "ibl", opts = {}
+  },                     -- Visual lines to indicate indentation - also adds return cariage ligatures and visual spacing
   "jiangmiao/auto-pairs",
 
   -- CPM plugins - completion

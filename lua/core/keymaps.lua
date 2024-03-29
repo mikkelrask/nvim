@@ -1,5 +1,8 @@
 local map = vim.keymap.set
-local opts = { silent = true }
+local opts = {
+  noremap = true,
+  silent = true
+}
 local cmd = vim.cmd
 -- set leader to space
 map('n', '<Space>', '', {})
@@ -31,8 +34,8 @@ map('n', '<leader>jj', ':m .+1<CR>==', opts)
 map('n', '<C-t>', cmd.tabedit, opts)
 
 -- Buffers
-map('n', '<Tab>', ':BufferNext<CR>', opts)
-map('n', '<S-Tab>', ':BufferPrev<CR>', opts)
+map('n', '<Tab>', ':bnext<CR>', opts)
+map('n', '<S-Tab>', ':bprev<CR>', opts)
 map('n', '<leader>bb', ':Telescope buffers<CR>', opts)
 
 -- Search in project
@@ -67,8 +70,17 @@ map('n', ' p', ':Lazy update<CR>', {
   silent        = true
 })
 
+-- bun build with leader ææ
+
+local function bun_build()
+  vim.cmd('!tmux send -t 2 "bun run build" Enter')
+  print('building in pane #2...')
+end
+
+map('n', '<leader>ææ', bun_build, {
+  noremap       = true,
+  silent        = true
+})
 
 -- Remove search highlights
 map('n', ' h', cmd.nohlsearch, opts)
--- j
--- Build Pio project
