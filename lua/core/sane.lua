@@ -16,6 +16,7 @@ vim.opt.autoread          = true
 vim.opt.hidden            = true
 vim.opt.showmode          = true
 vim.opt.showcmd           = true
+vim.opt.termguicolors     = true
 
 vim.opt.tabstop           = 2
 vim.opt.shiftwidth        = 2
@@ -30,13 +31,15 @@ vim.opt.smarttab          = true
 vim.opt.hlsearch          = true
 vim.opt.incsearch         = true
 vim.opt.cul               = true
-vim.opt.undodir           = '.undo'
-vim.opt.backupdir         = '.backup'
+vim.opt.undodir           = vim.fn.expand('~/.config/nvim/.undo//')
+vim.opt.undofile          = true
+vim.opt.backupdir         = vim.fn.expand('~/.config/nvim/.backup//')
 
 vim.opt.termguicolors     = true
 vim.opt.ignorecase        = true
 vim.opt.smartcase         = true
 vim.opt.wrap              = false
 vim.opt.mouse             = ''
-vim.api.nvim_set_hl(0, 'Comment', { italic=true, fg='#7f848e' })
+--vim.api.nvim_set_hl(0, 'Comment', { italic=true, fg='#7f848e' })
 -- This is not italic
+vim.cmd[[colorscheme tokyonight]]
