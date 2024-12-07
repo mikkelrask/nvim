@@ -13,3 +13,5 @@ au("autocmd BufNewFile *.sh 0r ~/.config/nvim/skeletons/script.sh")
 au("autocmd BufNewFile *.py 0r ~/.config/nvim/skeletons/python.py")
 -- Platformio.ini
 au("autocmd BufNewFile platformio.ini 0r ~/.config/nvim/skeletons/platformio.ini")
+-- shell.nix
+au("autocmd BufNewFile shell.nix 0r ~/.config/nvim/skeletons/shell.nix")
