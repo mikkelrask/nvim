@@ -1,6 +1,6 @@
 require('mason').setup()
 require('mason-lspconfig').setup({
-  ensure_installed = { 'arduino_language_server', 'tsserver', 'lua_ls', 'clangd', 'tailwindcss', 'pyright', 'bashls', 'vtsls' },
+  ensure_installed = { 'arduino_language_server', 'ts_ls', 'lua_ls', 'clangd', 'tailwindcss', 'pyright', 'bashls' },
 })
 
 local on_attach = function(_, _)
@@ -16,8 +16,7 @@ local nvim_lsp = require "lspconfig"
 nvim_lsp.arduino_language_server.setup {}
 nvim_lsp.clangd.setup{}
 nvim_lsp.tailwindcss.setup {}
-nvim_lsp.tsserver.setup {}
-nvim_lsp.vtsls.setup {}
+nvim_lsp.ts_ls.setup {}
 nvim_lsp.lua_ls.setup {
   on_attach = on_attach,
   settings = {
