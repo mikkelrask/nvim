@@ -16,7 +16,12 @@ vim.opt.rtp:prepend(lazypath)
 -- Install plugins
 local plugins = {
   --'ellisonleao/gruvbox.nvim',                                -- Make those colors gruuvy
-  {'rose-pine/neovim', name="rose-pine"},
+  --{'rose-pine/neovim', name="rose-pine"},
+  {
+    'folke/tokyonight.nvim',
+    lazy = false,
+    priority = 1000,
+  },
   {
     "nvim-tree/nvim-tree.lua",
     version = "*",
