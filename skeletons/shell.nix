@@ -1,7 +1,7 @@
 { pkgs ? import <nixpkgs> {} }:
 
 pkgs.mkShell {
-  name = "PROJECT-js"; # Rename for each project
+  name = "PROJECT-js"; # Renamed per project
   
   buildInputs = [
     pkgs.bun # Add more / others
