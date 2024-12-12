@@ -44,6 +44,12 @@ map('n', '<leader>fg', ':Telescope live_grep<CR>', opts)
 map('n', '<leader>fb', ':Telescope buffers<CR>', opts)
 map('n', '<leader>fh', ':Telescope help_tags<CR>', opts)
 
+-- NVIM Config
+map('n', '<leader>en', function()
+	require('telescope.builtin').find_files {
+		cwd = vim.fn.stdpath('config')
+	}end)
+
 -- visual block
 map('n',"'", "ciw''<ESC>p", opts )
 map('v', "'", [[:s/\%V'\%V/'/g<CR>``<]], opts)
@@ -57,7 +63,6 @@ map('n', '<C-w>', cmd.tabclose, {
   }
 )
 
-
 -- cursor line
 map('n', '<C><C>', ':lua require("specs").show_specs()<CR>')
 
@@ -70,17 +75,19 @@ map('n', ' p', ':Lazy update<CR>', {
   silent        = true
 })
 
--- bun build with leader ææ
-
-local function bun_build()
-  vim.cmd('!tmux send -t 2 "bun run build" Enter')
-  print('building in pane #2...')
-end
-
-map('n', '<leader>ææ', bun_build, {
-  noremap       = true,
-  silent        = true
-})
 
 -- Remove search highlights
 map('n', ' h', cmd.nohlsearch, opts)
+
+
+-- Execute marked text
+map('n', '<leader>x', ':.lua<CR>')
+map('v', '<leader>x', ':lua<CR>')
+
+-- Source current file
+
+
+map('n', '<leader><leader>x', function()
+  vim.cmd("source %")
+  print('🚀 To the moon!!')
+end)
