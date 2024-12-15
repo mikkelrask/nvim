@@ -47,6 +47,12 @@ return {
         noremap = true,
         silent = true
       })
+    map('n', '<leader>km', ':Telescope keymaps<CR>',
+      {
+        desc = "Diagnostics (CTRL+q to add to quicklist)",
+        noremap = true,
+        silent = true
+      })
 
     -- NVIM Config
     map('n', '<leader>en', function()

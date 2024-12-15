@@ -6,7 +6,7 @@ This is my custom Neovim configuration, designed to improve productivity and pro
 
 - **Modular Configuration**: The configuration is broken down into separate files for ease of management. Each file handles specific aspects of Neovim's functionality:
   - `init`: Main configuration entry point.
-  - `keymaps`: Custom key mappings for enhanced navigation and functionality.
+  - `keymaps`: Documented xustom key mappings for enhanced navigation and functionality - see all with `<space>km`
   - `sane`: General sane defaults and options to improve the usability of Neovim.
   - `highlightonyank`: Custom highlight on yank feature.
   - `undercurl`: Custom undercurl styling for a unique visual touch.
