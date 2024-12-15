@@ -1,3 +1,4 @@
+local map = vim.keymap.set
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   local lazyrepo = "https://github.com/folke/lazy.nvim"
@@ -21,6 +22,13 @@ require('lazy').setup({
     { "folke/tokyonight.nvim", opts = function() vim.cmd [[colorscheme "tokyonight-night"]] end },
     { import = "plugins" },
   },
+
+  -- Update packages
+  map('n', ' p', ':Lazy update<CR>', {
+    desc    = "Update Neovim packages with Lazy",
+    noremap = true,
+    silent  = true
+  }),
   checker = { enabled = true },
 })
 

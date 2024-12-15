@@ -67,53 +67,6 @@ map('n', '<S-Tab>', ':bprev<CR>', -- Previous buffer
     noremap = true,
     silent  = true
   })
-map('n', '<leader>bb', ':Telescope buffers<CR>', -- Fuzzy find open buffers
-  {
-    desc    = "Fuzzy find currently active buffers",
-    noremap = true,
-    silent  = true
-  })
-map('n', '<leader>fb', ':Telescope buffers<CR>', -- "Fuzzy find open buffer"
-  {
-    desc    = "Fuzzy find currently active buffers",
-    noremap = true,
-    silent  = true
-  })
-
--- Open file manager (Oil)
-map('n', '-', ":Oil --float .<CR>")
-
--- Search in project
-map('n', '<leader>ff', ':Telescope find_files<CR>', -- Fuzzy find files
-  {
-    desc    = "Fuzzy find files within current project directory",
-    noremap = true,
-    silent  = true
-  })
-map('n', '<leader>fg', ':Telescope live_grep<CR>', -- Fuzzy search words in files (grep)
-  {
-    desc    = "Fuzzy find text (grep) within files in the current project directory",
-    noremap = true,
-    silent  = true
-  })
-map('n', '<leader>fh', ':Telescope help_tags<CR>', -- Get help
-  {
-    desc    = "Search help pages",
-    noremap = true,
-    silent  = true
-  })
-
--- NVIM Config
-map('n', '<leader>en', function()
-    require('telescope.builtin').find_files { -- Fuzzy find files inside of ~/.config/nvim
-      cwd = vim.fn.stdpath('config')
-    }
-  end,
-  {
-    desc = "Settings: Neovim dotfiles",
-    noremap = true,
-    silent = true
-  })
 
 -- "'visual'" 'bloc' 'quotes'
 map('n', "<leader>'", "ciw''<ESC>hp",
@@ -171,13 +124,6 @@ map("n", "<leader><C-k>", ":cprev<CR>", { -- Previous entry
   desc = "Go to previous quick list entry",
   noremap = true,
   silent = true
-})
-
--- Update packages
-map('n', ' p', ':Lazy update<CR>', {
-  desc    = "Update Neovim packages with Lazy",
-  noremap = true,
-  silent  = true
 })
 
 -- Remove search highlights
