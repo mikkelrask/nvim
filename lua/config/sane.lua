@@ -42,4 +42,4 @@ vim.opt.wrap              = false
 vim.opt.mouse             = ''
 --vim.api.nvim_set_hl(0, 'Comment', { italic=true, fg='#7f848e' })
 -- This is not italic
-vim.cmd[[colorscheme tokyonight]]
+--vim.cmd[[colorscheme tokyonight]]

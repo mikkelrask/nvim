@@ -1,7 +1,5 @@
-require('core.keymaps')
-require('core.plugins')
-require('core.plugin_config')
+require('config.keymaps')
+require('config.sane')
+require('config')
 require('custom')
-require('core.sane')
 require('vimisms.templates')
-
