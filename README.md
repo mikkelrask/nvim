@@ -31,7 +31,7 @@ This is my custom Neovim configuration, designed to improve productivity and pro
   - `treesitter`: Treesitter configurations for syntax highlighting, folding, and incremental selection.
   - `undotree`: Undo history viewer that allows easy visualization and restoration of changes.
   - `vim-tmux-navigator`: Seamlessly navigate between Neovim and Tmux panes.
-  - `which-key`: Setup for `which-key.nvim`, displaying possible mappings for a keypress in a popup.
+  - `which-key`: displaying possible mappings for a keypress in a popup.
 
 - **Coding Enhancements**:
   - LSP support for multiple languages and linters.
@@ -55,3 +55,21 @@ Lazy should open by itself after pulling the repo, but if
     ```sh
     nvim +Lazy install
     ```
+
+## Directory Structure
+- `lua/config/`: Contains the main configuration and settings.
+- `lua/custom/`: Custom configurations that are not part of default settings.
+- `lua/plugins/`: Specific setups for each plugin.
+- `lua/vimisms/`: Custom Vim templates and utilities.
+
+### Examples
+**Skeleton Files:**
+- `skeletons/blog-post.md`: Template for markdown files created in my local blog directory
+- `skeletons/html.html`: Boilerplate HTML5 for when creating files ending with .htm and .html
+- `skeletons/platformio.ini`: Boilerplate template for PIO projects
+- `skeletons/python.py`: Python file boilerplate template.
+- `skeletons/react.tsx`: React file boilerplate template.
+- `skeletons/script.sh`: Shell script boilerplate template.
+- `skeletons/shell.nix`: Shell.nix file boilerplate template.
+
+This configuration is optimized for a productive coding experience and is easily extendable with new plugins and features.
