@@ -11,7 +11,10 @@ return {
   },
   config = function()
     -- Keymap for toggling nvim-tree
-    vim.keymap.set("n", "<C-b>", ":NvimTreeToggle<CR>", { silent = true, noremap = true, desc = "Toggle NvimTree" })
+    vim.keymap.set("n", "<C-b>", function()
+      vim.cmd.NvimTreeToggle()
+      vim.cmd.MiniMapToggle()
+    end, { silent = true, noremap = true, desc = "Toggle NvimTree" })
     -- Plugin setup
     require("nvim-tree").setup({
       disable_netrw = true,

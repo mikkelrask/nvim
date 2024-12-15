@@ -38,7 +38,9 @@ return {
     vim.api.nvim_create_user_command('MiniMapDisable', function() mini.disable() end, {})
 
     -- Keybinding to toggle minimap manually
-    map('n', '<leader>mm', ':MiniMapToggle<CR>', { desc = "Toggle minimap", noremap = true, silent = true })
+    map('n', '<leader>mm', function()
+      vim.cmd.MiniMapToggle()
+    end, { desc = "Toggle minimap", noremap = true, silent = true })
     -- Autocommands to toggle minimap for specific file types
     vim.api.nvim_create_augroup("MiniMapAutoToggle", { clear = true })
     vim.api.nvim_create_autocmd("FileType", {
