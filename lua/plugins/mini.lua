@@ -4,6 +4,7 @@ return {
   config = function()
     local statusline = require('mini.statusline')
     local mini = require('mini.map')
+    local sessions = require('mini.sessions')
 
     -- mini configuration
     mini.setup({
@@ -30,6 +31,12 @@ return {
     -- MiniStatusline configuration
     statusline.setup({
       use_icons = true,
+    })
+
+    sessions.setup({
+      config = function()
+        vim.cmd [['MiniSessions.setup()']]
+      end
     })
 
     -- Create mini commands
