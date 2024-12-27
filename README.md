@@ -2,6 +2,24 @@
 
 This is my custom Neovim configuration, designed to improve productivity and provide a smooth development experience. It utilizes to manage configurations, key mappings, and plugins, ensuring a clean and efficient setup.
 
+Starup time: **~100ms**
+
+## Get the latest version of Neovim
+```sh
+cd /tmp # Go to your /tmp directory
+wget https://github.com/neovim/neovim/release/latest/download/nvim-linux64.tar.gz # Grab the latest version (linux64)
+tar xvf nvim-linux64.tar.gz # untar the downloaded file
+cd nvim-linux64 # change directory into the unpacked directory
+cp -r ./* $HOME/.local/ # Copy the unpacked content to your `~/.local` directory (bin/, lib/ and share/)
+cd & rm -rf /tmp/neovim # Clean up
+```
+**If you can't invoke `nvim` after this process, make sure your `~/.local/bin` is in yout `$PATH`**
+```sh
+echo $PATH # Checks your path
+export "$PATH"="$PATH:/home/$USER/.local/bin" # Add the ~/.local/bin dir to $PATH if it didn't show in the last command
+```
+(`printenv` to list all your environment variables or see ['PATH environment variable'](https://www.ibm.com/docs/ro/aix/7.1?topic=accounts-path-environment-variable) for more.)
+
 ## Features
 
 ```key
