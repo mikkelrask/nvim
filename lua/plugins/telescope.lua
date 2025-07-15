@@ -41,19 +41,17 @@ return {
         noremap = true,
         silent  = true
       })
-    map('n', '<leader>DD', ':Telescope diagnostic<CR>',
+    map('n', '<leader>DD', ':Telescope diagnostics<CR>',
       {
         desc = "Diagnostics (CTRL+q to add to quicklist)",
         noremap = true,
         silent = true
       })
-    map('n', '<leader>km', ':Telescope keymaps<CR>',
-      {
-        desc = "Diagnostics (CTRL+q to add to quicklist)",
+    map('n', '<leader>fr', require('telescope.builtin').lsp_references, {
+        desc = "LSP Reference",
         noremap = true,
         silent = true
       })
-
     -- NVIM Config
     map('n', '<leader>en', function()
         require('telescope.builtin').find_files { -- Fuzzy find files inside of ~/.config/nvim
@@ -64,6 +62,14 @@ return {
         desc = "Settings: Neovim dotfiles",
         noremap = true,
         silent = true
-      })
+      }
+    )
+    map('n', '<leader>CS', ':Telescope colorschemes<CR>',
+      {
+        desc = "Pick a colorscheme. Will be reset in next session",
+        noremap = true,
+        silent = true
+      }
+    )
   end,
 }
