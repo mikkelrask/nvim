@@ -17,9 +17,35 @@ vim.opt.runtimepath:prepend(lazypath)
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
+vim.api.nvim_create_autocmd("ColorScheme", {
+  pattern = "*",
+  callback = function()
+    for _, group in ipairs({
+      "Normal", "NormalNC",
+      "TelescopeNormal", "TelescopeBorder",
+      "SignColumn", "MsgArea", "LineNr", "EndOfBuffer"
+    }) do
+      vim.api.nvim_set_hl(0, group, { bg = "none" })
+    end
+  end,
+})
+
 require('lazy').setup({
   spec = {
-    { "folke/tokyonight.nvim", opts = function() vim.cmd [[colorscheme "tokyonight-night"]] end },
+    {
+      "folke/tokyonight.nvim",
+      priority = 1000, -- ensure it's loaded before anything else
+      opts = {
+        style = "night",           -- "storm", "night", "moon", or "day"
+        transparent = false,
+        terminal_colors = true,
+        styles = {
+        },
+      },
+      init = function()
+        vim.cmd("colorscheme tokyonight")
+      end,
+    },
     { import = "plugins" },
   },
 
@@ -31,5 +57,3 @@ require('lazy').setup({
   }),
   checker = { enabled = true },
 })
-
-vim.cmd [[colorscheme tokyonight-night]]
