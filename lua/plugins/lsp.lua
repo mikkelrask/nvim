@@ -26,7 +26,7 @@ return {
       vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
       vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
       vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-      vim.keymap.set('n', '<space>f', function()
+      vim.keymap.set('n', '<space>DF', function()
         vim.lsp.buf.format { async = true }
       end, bufopts)
     end
@@ -43,6 +43,7 @@ return {
       "rust_analyzer",
       "gopls",
       "lua_ls",
+      "biome",
     }
 
     require("mason-lspconfig").setup({
@@ -50,10 +51,8 @@ return {
       automatic_enable = false,
     })
 
-    local lspconfig = require("lspconfig")
-
     for _, server_name in ipairs(servers) do
-      local opts = {
+      local overrides = {
         on_attach = on_attach,
         capabilities = capabilities,
       }
@@ -76,10 +75,10 @@ return {
             },
           },
         }
-        opts = vim.tbl_deep_extend("force", opts, lua_opts)
+        overrides = vim.tbl_deep_extend("force", overrides, lua_opts)
       end
 
-      lspconfig[server_name].setup(opts)
+      vim.lsp.config(server_name, overrides)
     end
   end,
 }
