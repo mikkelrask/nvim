@@ -47,7 +47,7 @@ return {
 
     require("mason-lspconfig").setup({
       ensure_installed = servers,
-      automatic_enable = false,
+      automatic_enable = true,
     })
 
     local lspconfig = require("lspconfig")
