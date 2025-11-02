@@ -6,7 +6,7 @@ return {
       detection_methods = { 'pattern' },
       patterns = { '.git' },
       silent_chdir = true,
-      scope_chdir = 'local', -- prøv local scope for mindre global cwd-skift
+      --scope_chdir = 'local', -- prøv local scope for mindre global cwd-skift
     })
 
     -- Her henter vi undermapper i ~/dotfiles
@@ -44,8 +44,8 @@ return {
           end
         end
 
-        -- Skift cwd hvis filen er i dotfiles config eller cwd != filens mappe
-        if in_dotfiles or file_dir ~= cwd then
+        -- Skift cwd hvis filen er i dotfiles config OG cwd er forskellig
+        if in_dotfiles and file_dir ~= cwd then
           vim.cmd('silent! cd ' .. vim.fn.fnameescape(file_dir))
           -- vim.notify('Changed cwd to ' .. file_dir .. ' for ' .. filepath) -- evt. debug
         end
