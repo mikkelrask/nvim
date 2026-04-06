@@ -3,7 +3,7 @@ return {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
     config = function()
-      require("nvim-treesitter.configs").setup({{
+      require("nvim-treesitter.config").setup({
         modules = {},
         ensure_installed = {
           "typescript",
@@ -15,9 +15,9 @@ return {
         },
         auto_install = false,
         sync_installed = true,
-        hightlight = { enable = true },
+        highlight = { enable = true },
         indent = { enable = true }
-      } })
+      })
     end
   }
 }

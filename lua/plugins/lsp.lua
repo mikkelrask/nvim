@@ -43,7 +43,7 @@ return {
       "rust_analyzer",
       "gopls",
       "lua_ls",
-      "biome",
+      "biome"
     }
 
     require("mason-lspconfig").setup({
